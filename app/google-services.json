@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "302596306916",
+    "firebase_url": "https://cimatec-movies-default-rtdb.firebaseio.com",
+    "project_id": "cimatec-movies",
+    "storage_bucket": "cimatec-movies.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302596306916:android:2e6f782b4601af59f5f9f1",
+        "android_client_info": {
+          "package_name": "com.example.cimatecmovies"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkmcZ8MQvcacMQWlbp67OO6bstjlbWPHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
