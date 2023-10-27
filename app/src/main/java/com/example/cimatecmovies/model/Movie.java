@@ -6,8 +6,16 @@ public class Movie {
         Year = year;
     }
 
+    public Movie() {
+    }
+
     private String Name;
     private int Year;
+
+    @Override
+    public String toString() {
+        return "\t"+Name + " (" + Year + ")";
+    }
 
     public String getName() {
         return Name;

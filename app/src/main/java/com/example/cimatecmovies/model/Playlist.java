@@ -3,6 +3,23 @@ package com.example.cimatecmovies.model;
 import java.util.ArrayList;
 
 public class Playlist {
+    public Playlist() {
+    }
+
+    @Override
+    public String toString() {
+        String mvs = "";
+        for ( Movie movie: movies
+             ) {
+            mvs = movie.toString() + "\n";
+        }
+        return "Playlist de " + CreatorsName +
+                ", likes=" + likes +
+                "\nMovies: \n" +
+                mvs
+                ;
+    }
+
     public Playlist(String creatorsName) {
         CreatorsName = creatorsName;
     }
@@ -23,8 +40,8 @@ public class Playlist {
         return movies;
     }
 
-    public void setMovies(ArrayList<Movie> movies) {
-        this.movies = movies;
+    public void setMovies(Movie movie) {
+        this.movies.add(movie);
     }
 
     public int getLikes() {
