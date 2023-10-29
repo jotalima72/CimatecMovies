@@ -34,9 +34,6 @@ public class Playlist_lists extends AppCompatActivity {
         if(bundle.getString("myRA")!=null){
             myRA = bundle.getString("myRA");
         }
-        else{
-            System.out.println("chamar tela de nome");
-        }
         final String myRaFinal = myRA;
         playlistsRV = findViewById(R.id.playlistsRV);
         data.addValueEventListener(new ValueEventListener() {

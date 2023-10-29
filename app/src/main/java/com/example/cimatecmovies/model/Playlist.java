@@ -23,6 +23,7 @@ public class Playlist {
 
     public Playlist(String creatorsName) {
         CreatorsName = creatorsName;
+        likes = 0;
     }
     private String id;
     private String CreatorsName;

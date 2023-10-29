@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,35 +33,42 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String ra = raText.getText().toString();
-                OnCompleteListener<DataSnapshot> listener = new OnCompleteListener<DataSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-                        String user = "";
-                        if (task.isSuccessful()){
-                            DataSnapshot dataRes = task.getResult();
-                            for (DataSnapshot sp : dataRes.getChildren()) {
-                                String result = sp.getKey();
-                                if(result.equals(ra)){
-                                    user = result;
-                                    break;
+                if(!ra.isEmpty()) {
+                    final String finalra = ra.replaceAll("\\.","");
+                    OnCompleteListener<DataSnapshot> listener = new OnCompleteListener<DataSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            String user = "";
+                            if (task.isSuccessful()) {
+                                DataSnapshot dataRes = task.getResult();
+                                for (DataSnapshot sp : dataRes.getChildren()) {
+                                    String result = sp.getKey();
+                                    if (result.equals(finalra)) {
+                                        user = result;
+                                        break;
+                                    }
                                 }
-                            }
-                            if(user.isEmpty()){
-                                System.out.println("chamar tela de nome");
-                            }
-                            else {
-                                System.out.println("chamar lista de playlists");
-                                Intent intent = new Intent(getApplicationContext(), Playlist_lists.class);
-                                intent.putExtra("myRA", user);
-                                startActivity(intent);
+                                if (user.isEmpty()) {
+                                    System.out.println("chamar tela de nome");
+                                    Intent intent = new Intent(getApplicationContext(), CreateName.class);
+                                    intent.putExtra("myRA", finalra);
+                                    startActivity(intent);
+                                } else {
+                                    System.out.println("chamar lista de playlists");
+                                    Intent intent = new Intent(getApplicationContext(), Playlist_lists.class);
+                                    intent.putExtra("myRA", user);
+                                    startActivity(intent);
+                                }
+                            } else {
+                                System.out.println("Task deu merda");
                             }
                         }
-                        else{
-                            System.out.println("Task deu merda");
-                        }
-                    }
-                };
-                data.get().addOnCompleteListener(listener);
+                    };
+                    data.get().addOnCompleteListener(listener);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Insira o seu RA", Toast.LENGTH_LONG).show();
+                }
             }
         });
 //        playlist.setMovies(movie);
