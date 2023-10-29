@@ -1,13 +1,13 @@
 package com.example.cimatecmovies.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cimatecmovies.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         raText = findViewById(R.id.raText);
         raButton = findViewById(R.id.raButton);
-
         raButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -41,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
                             DataSnapshot dataRes = task.getResult();
                             for (DataSnapshot sp : dataRes.getChildren()) {
                                 String result = sp.getKey();
-                                System.out.println(result);
                                 if(result.equals(ra)){
                                     user = result;
                                     break;
@@ -53,17 +51,16 @@ public class MainActivity extends AppCompatActivity {
                             else {
                                 System.out.println("chamar lista de playlists");
                                 Intent intent = new Intent(getApplicationContext(), Playlist_lists.class);
+                                intent.putExtra("myRA", user);
                                 startActivity(intent);
                             }
                         }
-
-
+                        else{
+                            System.out.println("Task deu merda");
+                        }
                     }
                 };
                 data.get().addOnCompleteListener(listener);
-
-//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                startActivity(intent);
             }
         });
 //        playlist.setMovies(movie);

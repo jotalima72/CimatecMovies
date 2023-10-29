@@ -14,7 +14,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "\t"+Name + " (" + Year + ")";
+        return "\t"+Name + " (" + Year + ")\n";
     }
 
     public String getName() {

@@ -1,7 +1,5 @@
 package com.example.cimatecmovies.model;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 public class Playlist {
@@ -15,7 +13,8 @@ public class Playlist {
              ) {
             mvs = movie.toString() + "\n";
         }
-        return "Playlist de " + CreatorsName +
+        return "id:" + id  +
+                "\nPlaylist de " + CreatorsName +
                 ", likes=" + likes +
                 "\nMovies: \n" +
                 mvs
@@ -25,10 +24,27 @@ public class Playlist {
     public Playlist(String creatorsName) {
         CreatorsName = creatorsName;
     }
-
+    private String id;
     private String CreatorsName;
     private ArrayList<Movie> movies = new ArrayList<>();
     private int likes = 0;
+
+    private ArrayList<String> likedPlaylists = new ArrayList<>();
+
+    public ArrayList<String> getLikedPlaylists() {
+        return likedPlaylists;
+    }
+
+    public void setLikedPlaylists(String likedPlaylist) {
+        if(this.likedPlaylists == null){
+            this.likedPlaylists = new ArrayList<>();
+        }
+        this.likedPlaylists.add(likedPlaylist);
+    }
+
+    public void removeLikedPlaylists(String dislikedPlaylist){
+        this.likedPlaylists.remove(dislikedPlaylist);
+    }
 
     public String getCreatorsName() {
         return CreatorsName;
@@ -38,8 +54,12 @@ public class Playlist {
         CreatorsName = creatorsName;
     }
 
-    public ArrayList<Movie> getMovies() {
-        return movies;
+    public String getMovies() {
+        String linhaMovies = "";
+        for(Movie mov: this.movies) {
+            linhaMovies += mov.toString();
+        }
+        return linhaMovies;
     }
 
     public void setMovies(Movie movie) {
@@ -53,4 +73,14 @@ public class Playlist {
     public void setLikes(int likes) {
         this.likes = likes;
     }
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }
