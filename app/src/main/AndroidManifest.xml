@@ -13,6 +13,9 @@
         android:theme="@style/Theme.CimatecMovies"
         tools:targetApi="31">
         <activity
+            android:name=".activities.Criar_Playlist"
+            android:exported="false" />
+        <activity
             android:name=".activities.CreateName"
             android:exported="false" />
         <activity

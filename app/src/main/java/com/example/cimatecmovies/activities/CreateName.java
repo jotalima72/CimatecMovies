@@ -39,6 +39,7 @@ public class CreateName extends AppCompatActivity {
                     data.child(myRA).setValue(playlist);
                     Intent intent = new Intent(getApplicationContext(), Playlist_lists.class);
                     intent.putExtra("myRA", myRA);
+                    intent.putExtra("Nome", nome);
                     startActivity(intent);
                 }
                 else{

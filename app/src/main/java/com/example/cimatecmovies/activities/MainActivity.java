@@ -39,24 +39,25 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<DataSnapshot> task) {
                             String user = "";
+                            String nome = "";
                             if (task.isSuccessful()) {
                                 DataSnapshot dataRes = task.getResult();
                                 for (DataSnapshot sp : dataRes.getChildren()) {
                                     String result = sp.getKey();
                                     if (result.equals(finalra)) {
                                         user = result;
+                                        nome = sp.child("creatorsName").getValue(String.class);
                                         break;
                                     }
                                 }
                                 if (user.isEmpty()) {
-                                    System.out.println("chamar tela de nome");
                                     Intent intent = new Intent(getApplicationContext(), CreateName.class);
                                     intent.putExtra("myRA", finalra);
                                     startActivity(intent);
                                 } else {
-                                    System.out.println("chamar lista de playlists");
                                     Intent intent = new Intent(getApplicationContext(), Playlist_lists.class);
                                     intent.putExtra("myRA", user);
+                                    intent.putExtra("Nome", nome);
                                     startActivity(intent);
                                 }
                             } else {

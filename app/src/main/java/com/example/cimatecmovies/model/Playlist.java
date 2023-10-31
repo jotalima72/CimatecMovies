@@ -63,6 +63,10 @@ public class Playlist {
         return linhaMovies;
     }
 
+    public int countMovies(){
+        return this.movies.size();
+    }
+
     public void setMovies(Movie movie) {
         this.movies.add(movie);
     }
